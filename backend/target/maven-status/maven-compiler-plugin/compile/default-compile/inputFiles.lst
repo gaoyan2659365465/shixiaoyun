@@ -1,0 +1,17 @@
+C:\Users\26593\Documents\HBuilderProjects\shixiaoyun\backend\src\main\java\com\shixiaoyun\utils\JwtUtil.java
+C:\Users\26593\Documents\HBuilderProjects\shixiaoyun\backend\src\main\java\com\shixiaoyun\dto\CodeLoginDTO.java
+C:\Users\26593\Documents\HBuilderProjects\shixiaoyun\backend\src\main\java\com\shixiaoyun\dto\UserRegisterDTO.java
+C:\Users\26593\Documents\HBuilderProjects\shixiaoyun\backend\src\main\java\com\shixiaoyun\mapper\UserMapper.java
+C:\Users\26593\Documents\HBuilderProjects\shixiaoyun\backend\src\main\java\com\shixiaoyun\vo\UserInfoVO.java
+C:\Users\26593\Documents\HBuilderProjects\shixiaoyun\backend\src\main\java\com\shixiaoyun\dto\WechatLoginDTO.java
+C:\Users\26593\Documents\HBuilderProjects\shixiaoyun\backend\src\main\java\com\shixiaoyun\controller\UserController.java
+C:\Users\26593\Documents\HBuilderProjects\shixiaoyun\backend\src\main\java\com\shixiaoyun\entity\User.java
+C:\Users\26593\Documents\HBuilderProjects\shixiaoyun\backend\src\main\java\com\shixiaoyun\vo\LoginVO.java
+C:\Users\26593\Documents\HBuilderProjects\shixiaoyun\backend\src\main\java\com\shixiaoyun\common\Result.java
+C:\Users\26593\Documents\HBuilderProjects\shixiaoyun\backend\src\main\java\com\shixiaoyun\service\UserService.java
+C:\Users\26593\Documents\HBuilderProjects\shixiaoyun\backend\src\main\java\com\shixiaoyun\dto\PasswordLoginDTO.java
+C:\Users\26593\Documents\HBuilderProjects\shixiaoyun\backend\src\main\java\com\shixiaoyun\utils\AESUtil.java
+C:\Users\26593\Documents\HBuilderProjects\shixiaoyun\backend\src\main\java\com\shixiaoyun\common\BusinessException.java
+C:\Users\26593\Documents\HBuilderProjects\shixiaoyun\backend\src\main\java\com\shixiaoyun\common\GlobalExceptionHandler.java
+C:\Users\26593\Documents\HBuilderProjects\shixiaoyun\backend\src\main\java\com\shixiaoyun\service\impl\UserServiceImpl.java
+C:\Users\26593\Documents\HBuilderProjects\shixiaoyun\backend\src\main\java\com\shixiaoyun\ShixiaoyunApplication.java
