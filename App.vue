@@ -1,3 +1,9 @@
+<template>
+	<view>
+		<router-view />
+	</view>
+</template>
+
 <script>
 	export default {
 		onLaunch: function() {

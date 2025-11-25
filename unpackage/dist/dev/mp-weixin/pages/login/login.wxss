@@ -1,0 +1,79 @@
+
+.login-container.data-v-e4e4508d {
+	min-height: 100vh;
+	background-color: #F5F6FA;
+	padding: 0 32rpx;
+}
+.logo-section.data-v-e4e4508d {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 120rpx;
+	margin-bottom: 80rpx;
+}
+.logo.data-v-e4e4508d {
+	width: 160rpx;
+	height: 160rpx;
+	margin-bottom: 24rpx;
+}
+.app-name.data-v-e4e4508d {
+	font-size: 48rpx;
+	font-weight: 600;
+	line-height: 64rpx;
+	color: #17171a;
+}
+.form-section.data-v-e4e4508d {
+	width: 100%;
+}
+.input-item.data-v-e4e4508d {
+	position: relative;
+	height: 112rpx;
+	background-color: #fff;
+	border-radius: 16rpx;
+	margin-bottom: 32rpx;
+	padding: 0 32rpx;
+	display: flex;
+	align-items: center;
+}
+.input.data-v-e4e4508d {
+	flex: 1;
+	font-size: 32rpx;
+	color: #17171a;
+}
+.eye-icon.data-v-e4e4508d {
+	width: 48rpx;
+	height: 48rpx;
+}
+.forgot-password.data-v-e4e4508d {
+	text-align: right;
+	margin-bottom: 48rpx;
+}
+.forgot-password text.data-v-e4e4508d {
+	font-size: 28rpx;
+	color: #4458ff;
+}
+.login-btn.data-v-e4e4508d {
+	width: 100%;
+	height: 112rpx;
+	background-color: #4458ff;
+	color: #fff;
+	font-size: 32rpx;
+	font-weight: 500;
+	line-height: 112rpx;
+	border-radius: 16rpx;
+	border: none;
+	margin-bottom: 32rpx;
+}
+.login-btn.data-v-e4e4508d::after {
+	border: none;
+}
+.register-link.data-v-e4e4508d {
+	text-align: center;
+	font-size: 28rpx;
+}
+.register-link .text.data-v-e4e4508d {
+	color: #656a73;
+}
+.register-link .link.data-v-e4e4508d {
+	color: #4458ff;
+}

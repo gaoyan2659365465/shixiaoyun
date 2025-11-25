@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "视消云",
+    "navigationBarBackgroundColor": "#F5F6FA",
+    "backgroundColor": "#F5F6FA"
+  },
+  "usingComponents": {}
+}
