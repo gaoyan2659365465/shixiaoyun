@@ -34,8 +34,11 @@ public class JwtUtil {
     public void init() {
         secret = secretConfig;
         expiration = expirationConfig;
-        // 生成密钥
-        key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
+        // 生成密钥，确保至少32字节（256位）
+        byte[] keyBytes = new byte[32];
+        byte[] secretBytes = secret.getBytes(StandardCharsets.UTF_8);
+        System.arraycopy(secretBytes, 0, keyBytes, 0, Math.min(secretBytes.length, 32));
+        key = Keys.hmacShaKeyFor(keyBytes);
     }
 
     /**

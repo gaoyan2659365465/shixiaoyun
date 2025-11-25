@@ -13,7 +13,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/shixiaoyun?useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
-    password: your_password
+    password: your_new_password
     druid:
       initial-size: 5
       min-idle: 5

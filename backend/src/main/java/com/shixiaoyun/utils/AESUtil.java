@@ -23,7 +23,10 @@ public class AESUtil {
     @PostConstruct
     public void init() {
         // 使用配置的密钥初始化AES
-        byte[] key = SecureUtil.generateKey(secretKeyConfig).getEncoded();
+        // 将密钥字符串转换为固定长度的字节数组（AES-128需要16字节）
+        byte[] key = new byte[16];
+        byte[] secretBytes = secretKeyConfig.getBytes(StandardCharsets.UTF_8);
+        System.arraycopy(secretBytes, 0, key, 0, Math.min(secretBytes.length, 16));
         aes = SecureUtil.aes(key);
     }
 
