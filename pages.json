@@ -5,6 +5,12 @@
 			"style": {
 				"navigationBarTitleText": "视消云"
 			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
 		}
 	],
 	"globalStyle": {
