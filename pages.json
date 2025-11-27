@@ -11,6 +11,20 @@
 			"style": {
 				"navigationBarTitleText": "登录"
 			}
+		},
+		{
+			"path": "pages/register/register",
+			"style": {
+				"navigationBarTitleText": "注册",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/cooperation/cooperation",
+			"style": {
+				"navigationBarTitleText": "合作伙伴",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
 		}
 	],
 	"globalStyle": {
