@@ -1,0 +1,65 @@
+// 视消云小程序 - 全局样式变量
+
+// ==================== 颜色变量 ====================
+
+// 品牌色与辅助色
+$brand-blue: #4458ff;
+$assist-blue: #1386ff;
+$assist-red: #f34545;
+$assist-orange: #ff7437;
+$assist-yellow: #ff9317;
+$success-green: #0fbc91;
+
+// 中性色
+$bg-color: #F5F6FA;
+$divider-color: #E5E6EA;
+$border-color: #D8D9DC;
+$card-bg: #FFFFFF;
+
+// 字体色
+$text-title: #17171a;
+$text-body: #656a73;
+$text-secondary: #a7abb2;
+
+// ==================== 间距变量 ====================
+
+$spacing-1: 8rpx;   // W1 - 最小间距
+$spacing-2: 16rpx;  // W2 - icon与文字
+$spacing-3: 24rpx;  // W3 - 图片与文字
+$spacing-4: 32rpx;  // W4 - 屏幕边距
+
+// ==================== 字体大小 ====================
+
+$font-t1: 48rpx;  // 24pt - 特大标题
+$font-t2: 36rpx;  // 18pt - 大标题
+$font-t3: 32rpx;  // 16pt - 正文
+$font-t4: 28rpx;  // 14pt - 辅助说明
+$font-t5: 24rpx;  // 12pt - 辅助文案
+$font-t6: 20rpx;  // 10pt - 备注文案
+
+// ==================== 行高 ====================
+
+$line-height-t1: 64rpx;  // 32pt
+$line-height-t2: 52rpx;  // 26pt
+$line-height-t3: 44rpx;  // 22pt
+$line-height-t4: 40rpx;  // 20pt
+$line-height-t5: 32rpx;  // 16pt
+$line-height-t6: 28rpx;  // 14pt
+
+// ==================== 圆角 ====================
+
+$radius-small: 8rpx;
+$radius-medium: 16rpx;
+$radius-large: 32rpx;
+$radius-circle: 50%;
+
+// ==================== 阴影 ====================
+
+$shadow-light: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+$shadow-medium: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+$shadow-heavy: 0 8rpx 24rpx rgba(0, 0, 0, 0.12);
+
+// ==================== 其他 ====================
+
+$transition-duration: 0.3s;
+$transition-timing: ease-in-out;

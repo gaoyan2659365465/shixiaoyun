@@ -3,7 +3,28 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "视消云"
+				"navigationBarTitleText": "视消云",
+				"enablePullDownRefresh": true,
+				"onReachBottomDistance": 50,
+				"backgroundTextStyle": "dark"
+			}
+		},
+		{
+			"path": "pages/venue/venue",
+			"style": {
+				"navigationBarTitleText": "场所"
+			}
+		},
+		{
+			"path": "pages/message/message",
+			"style": {
+				"navigationBarTitleText": "消息"
+			}
+		},
+		{
+			"path": "pages/profile/profile",
+			"style": {
+				"navigationBarTitleText": "我的"
 			}
 		},
 		{
@@ -25,6 +46,15 @@
 				"navigationBarTitleText": "合作伙伴",
 				"navigationBarBackgroundColor": "#FFFFFF"
 			}
+		},
+		{
+			"path": "pages/points/points",
+			"style": {
+				"navigationBarTitleText": "积分商城",
+				"enablePullDownRefresh": true,
+				"onReachBottomDistance": 50,
+				"backgroundTextStyle": "dark"
+			}
 		}
 	],
 	"globalStyle": {
@@ -32,6 +62,38 @@
 		"navigationBarTitleText": "视消云",
 		"navigationBarBackgroundColor": "#F5F6FA",
 		"backgroundColor": "#F5F6FA"
+	},
+	"tabBar": {
+		"color": "#a7abb2",
+		"selectedColor": "#4458ff",
+		"backgroundColor": "#FFFFFF",
+		"borderStyle": "black",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "static/images/tabbar/home.png",
+				"selectedIconPath": "static/images/tabbar/home-active.png"
+			},
+			{
+				"pagePath": "pages/venue/venue",
+				"text": "场所",
+				"iconPath": "static/images/tabbar/venue.png",
+				"selectedIconPath": "static/images/tabbar/venue-active.png"
+			},
+			{
+				"pagePath": "pages/message/message",
+				"text": "消息",
+				"iconPath": "static/images/tabbar/message.png",
+				"selectedIconPath": "static/images/tabbar/message-active.png"
+			},
+			{
+				"pagePath": "pages/profile/profile",
+				"text": "我的",
+				"iconPath": "static/images/tabbar/profile.png",
+				"selectedIconPath": "static/images/tabbar/profile-active.png"
+			}
+		]
 	},
 	"uniIdRouter": {}
 }
