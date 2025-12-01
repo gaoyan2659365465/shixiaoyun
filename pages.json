@@ -55,6 +55,15 @@
 				"onReachBottomDistance": 50,
 				"backgroundTextStyle": "dark"
 			}
+		},
+		{
+			"path": "pages/coupon/coupon",
+			"style": {
+				"navigationBarTitleText": "卡券中心",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false,
+				"backgroundTextStyle": "dark"
+			}
 		}
 	],
 	"globalStyle": {

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-视消云 (Shixiaoyun) is a uni-app based WeChat mini-program with a Spring Boot backend. The project implements user authentication (login/register) with multiple login methods and a cooperation partner page.
+视消云 (Shixiaoyun) is a uni-app based WeChat mini-program with a Spring Boot backend. The project implements user authentication (login/register), points mall, coupon center, cooperation partner page, and a tabbed navigation structure.
 
 ## Technology Stack
 
@@ -64,6 +64,15 @@ mysql -u root -p shixiaoyun < backend/src/main/resources/db/schema.sql
 - `utils/storage.js`: Local storage wrapper for uni.setStorageSync/getStorageSync
 - `utils/validator.js`: Form validation (phone, email, password, verification codes)
 
+**API Modules**:
+- `api/user.js`: User authentication and profile APIs
+- `api/activity.js`: Activity related APIs
+- `api/points.js`: Points mall and coupon APIs (backend integration)
+- `api/coupon.js`: Coupon center APIs (currently mock data implementation)
+
+**Mock Data**:
+- `data/coupon.js`: Mock coupon data for development (coupon center uses this instead of backend)
+
 **API Base URL**: Configured in `utils/request.js:2` as `http://localhost:8080/api`
 
 **Authentication**: JWT token stored in local storage, automatically attached to requests via Authorization header
@@ -104,10 +113,24 @@ Backend configuration in `backend/src/main/resources/application.yml`:
 ## Pages and Routes
 
 Configured in `pages.json`:
-- `/pages/index/index` - Home page
+
+**Main Pages (TabBar)**:
+- `/pages/index/index` - Home page (tab 1)
+- `/pages/venue/venue` - Venue page (tab 2)
+- `/pages/message/message` - Message page (tab 3)
+- `/pages/profile/profile` - Profile/My page (tab 4)
+
+**Secondary Pages**:
 - `/pages/login/login` - Login page
-- `/pages/register/register` - Registration (custom navigation)
+- `/pages/register/register` - Registration page (custom navigation)
 - `/pages/cooperation/cooperation` - Partner cooperation page
+- `/pages/points/points` - Points mall page (with pull-to-refresh)
+- `/pages/coupon/coupon` - Coupon center page (custom navigation, uses mock data)
+
+**TabBar Configuration**:
+- 4 tabs with custom icons (home, venue, message, profile)
+- Active color: `#4458ff` (brand blue)
+- Inactive color: `#a7abb2` (auxiliary text)
 
 ## API Endpoints
 
@@ -124,7 +147,25 @@ All endpoints prefixed with `/api`:
 - `POST /user/code/email` - Send email verification code
 - `POST /user/code/sms` - Send SMS verification code
 
-Note: In development, verification codes are logged to backend console instead of being sent.
+**Points Mall** (from `api/points.js`):
+- `GET /points/user` - Get user points information
+- `GET /points/history` - Get points transaction history (paginated)
+- `GET /points/products` - Get points mall product list (with category/sort filters)
+- `GET /points/products/:id` - Get product detail
+- `POST /points/products/:id/exchange` - Exchange product with points
+- `GET /points/exchanges` - Get my exchange orders (paginated)
+- `GET /points/exchanges/:id` - Get exchange order detail
+- `GET /points/coupons` - Get my coupons list
+- `POST /points/coupons/:id/use` - Use a coupon
+
+**Coupon Center** (from `api/coupon.js` - **Mock Implementation**):
+- `getCouponList(params)` - Get coupon list by status (unused/used/expired/all)
+- `useCoupon(couponId)` - Mark coupon as used
+- `getCouponStats()` - Get coupon statistics (counts by status)
+
+Note:
+- In development, verification codes are logged to backend console instead of being sent.
+- Coupon center currently uses mock data from `data/coupon.js` with simulated network delays (200-500ms).
 
 ## UI Design System
 
@@ -141,6 +182,8 @@ Layout: 375×812 design canvas, 4px grid system, 56px form/button height, 8px ca
 
 ## Development Notes
 
+### General Guidelines
+
 - Frontend API calls must use `utils/request.js` wrapper, not raw uni.request
 - Form validation must use `utils/validator.js` before submission
 - Backend exceptions should throw `BusinessException` for business logic errors
@@ -148,3 +191,45 @@ Layout: 375×812 design canvas, 4px grid system, 56px form/button height, 8px ca
 - Password validation: 6-20 characters, must contain letters and numbers
 - Phone validation: Chinese mobile format (1[3-9]xxxxxxxxx)
 - Verification codes: 6 digits, 5-minute expiration
+
+### Mock Data vs Backend APIs
+
+The project uses a hybrid approach:
+- **User authentication, points mall**: Use backend APIs via `utils/request.js`
+- **Coupon center**: Currently uses mock data from `data/coupon.js` via `api/coupon.js`
+
+When implementing new features:
+1. Start with mock data in `data/` directory for rapid prototyping
+2. Create API wrapper in `api/` directory (can return mock data initially)
+3. Replace with real backend integration when backend is ready
+4. Keep the same API interface to minimize frontend changes
+
+### Page Navigation Patterns
+
+- **TabBar pages**: Use `uni.switchTab()` for navigation between main tabs
+- **Regular pages**: Use `uni.navigateTo()` for standard navigation
+- **Custom navigation**: Set `navigationStyle: "custom"` in pages.json for custom headers
+- **Pull-to-refresh**: Enable with `enablePullDownRefresh: true` in pages.json
+
+### Component Organization
+
+For complex pages (like coupon center), follow this structure:
+```
+pages/[feature]/
+├── [feature].vue           # Main page
+├── components/             # Feature-specific components
+│   ├── ComponentA.vue
+│   └── ComponentB.vue
+└── README.md              # Optional documentation
+```
+
+### Coupon Center Implementation
+
+The coupon center (`pages/coupon/coupon.vue`) demonstrates:
+- Tab-based filtering (unused/used/expired)
+- Pagination with pull-to-refresh and load-more
+- Mock data integration with simulated delays
+- Custom navigation bar
+- Status-based UI rendering
+
+Reference the implementation plan in `需求/卡券中心实施方案.md` for detailed architecture.
