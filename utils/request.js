@@ -1,5 +1,7 @@
 // 统一请求封装
-const BASE_URL = 'http://localhost:8080/api'
+// 开发环境使用本机IP地址，便于在浏览器和微信开发者工具中访问
+// 生产环境需要替换为实际的服务器地址
+const BASE_URL = 'http://192.168.1.3:8080/api'
 
 const request = (options) => {
   return new Promise((resolve, reject) => {

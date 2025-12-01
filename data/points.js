@@ -123,7 +123,7 @@ export const sortOptions = [
 
 // 用户积分信息
 export const userPoints = {
-	points: 0,
+	points: 1000,
 	level: 1,
 	levelName: '普通会员',
 	nextLevelPoints: 100

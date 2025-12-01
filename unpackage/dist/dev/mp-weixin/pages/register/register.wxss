@@ -1,139 +1,129 @@
 
 .register-container.data-v-bac4a35d {
 	min-height: 100vh;
-	background-color: #F5F6FA;
+	background-color: #F5F5F5;
+}
+
+/* 自定义导航栏 */
+.custom-navbar.data-v-bac4a35d {
+	position: relative;
+	height: 88rpx;
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-bottom: 1rpx solid #E5E5E5;
+}
+.back-btn.data-v-bac4a35d {
+	position: absolute;
+	left: 32rpx;
+	width: 48rpx;
+	height: 48rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.back-icon.data-v-bac4a35d {
+	font-size: 48rpx;
+	color: #000;
+	font-weight: 300;
+	line-height: 1;
+}
+.navbar-title.data-v-bac4a35d {
+	font-size: 34rpx;
+	font-weight: 500;
+	color: #000;
+}
+
+/* 表单容器 */
+.form-container.data-v-bac4a35d {
+	margin: 32rpx 32rpx 0;
+	background-color: #FFFFFF;
+	border-radius: 16rpx;
 	padding: 48rpx 32rpx;
 }
 
-/* 顶部标题 */
-.header.data-v-bac4a35d {
-	margin-bottom: 60rpx;
-	margin-top: 40rpx;
+/* 表单项 */
+.form-item.data-v-bac4a35d {
+	margin-bottom: 48rpx;
 }
-.title.data-v-bac4a35d {
-	display: block;
-	font-size: 48rpx;
-	font-weight: 600;
-	color: #17171a;
+.label-wrapper.data-v-bac4a35d {
+	display: flex;
+	align-items: center;
 	margin-bottom: 16rpx;
 }
-.subtitle.data-v-bac4a35d {
-	display: block;
+.form-label.data-v-bac4a35d {
 	font-size: 28rpx;
-	color: #656a73;
-}
-
-/* 注册表单 */
-.register-form.data-v-bac4a35d {
-	margin-bottom: 32rpx;
-}
-.form-item.data-v-bac4a35d {
-	margin-bottom: 32rpx;
-}
-.input-wrapper.data-v-bac4a35d {
-	display: flex;
-	align-items: center;
-	height: 112rpx;
-	background-color: #fff;
-	border-radius: 16rpx;
-	padding: 0 24rpx;
-	border: 2rpx solid transparent;
-	position: relative;
-}
-.input-wrapper.error.data-v-bac4a35d {
-	border-color: #f34545;
+	color: #000;
+	font-weight: 400;
 }
 .required-mark.data-v-bac4a35d {
+	font-size: 28rpx;
 	color: #f34545;
-	font-size: 32rpx;
-	margin-right: 8rpx;
-	line-height: 1;
+	margin-left: 4rpx;
 }
-.input-icon.data-v-bac4a35d {
-	width: 40rpx;
-	height: 40rpx;
-	margin-right: 16rpx;
+.optional-mark.data-v-bac4a35d {
+	font-size: 24rpx;
+	color: #a7abb2;
+	margin-left: 8rpx;
 }
 .form-input.data-v-bac4a35d {
-	flex: 1;
+	width: 100%;
+	height: 80rpx;
+	background-color: #F5F5F5;
+	border-radius: 8rpx;
+	padding: 0 24rpx;
 	font-size: 28rpx;
-	color: #17171a;
+	color: #000;
+	border: none;
 }
-.clear-icon.data-v-bac4a35d,
-.eye-icon.data-v-bac4a35d {
-	width: 36rpx;
-	height: 36rpx;
-	margin-left: 16rpx;
+.form-textarea.data-v-bac4a35d {
+	width: 100%;
+	min-height: 160rpx;
+	background-color: #F5F5F5;
+	border-radius: 8rpx;
+	padding: 20rpx 24rpx;
+	font-size: 28rpx;
+	color: #000;
+	border: none;
+	box-sizing: border-box;
 }
-.code-btn.data-v-bac4a35d {
-	padding: 12rpx 24rpx;
-	font-size: 24rpx;
-	color: #4458ff;
-	white-space: nowrap;
-}
-.code-btn.disabled.data-v-bac4a35d {
-	color: #a7abb2;
-}
-.error-text.data-v-bac4a35d {
-	display: flex;
-	align-items: center;
-	margin-top: 8rpx;
-	margin-left: 24rpx;
-	font-size: 24rpx;
-	color: #f34545;
-}
-.error-icon.data-v-bac4a35d {
-	width: 24rpx;
-	height: 24rpx;
-	margin-right: 4rpx;
+.input-placeholder.data-v-bac4a35d {
+	color: #C0C0C0;
+	font-size: 28rpx;
 }
 
-/* 隐私协议 */
-.agreement-section.data-v-bac4a35d {
-	margin-bottom: 32rpx;
-}
-.agreement-label.data-v-bac4a35d {
+/* 隐私条款 */
+.agreement.data-v-bac4a35d {
 	display: flex;
 	align-items: center;
+	margin-top: 80rpx;
+	margin-bottom: 48rpx;
+}
+.agreement-checkbox.data-v-bac4a35d {
+	margin-right: 16rpx;
+	transform: scale(1);
 }
 .agreement-text.data-v-bac4a35d {
-	font-size: 24rpx;
-	color: #656a73;
-	margin-left: 8rpx;
-}
-.link.data-v-bac4a35d {
-	color: #4458ff;
+	font-size: 28rpx;
+	color: #000;
+	font-weight: 400;
 }
 
-/* 注册按钮 */
-.register-btn.data-v-bac4a35d {
+/* 提交按钮 */
+.submit-btn.data-v-bac4a35d {
 	width: 100%;
-	height: 112rpx;
-	background-color: #4458ff;
-	color: #fff;
+	height: 88rpx;
+	background-color: #000;
+	color: #FFF;
 	font-size: 32rpx;
 	font-weight: 500;
-	border-radius: 16rpx;
+	border-radius: 44rpx;
 	border: none;
-	margin-bottom: 32rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
-.register-btn.loading.data-v-bac4a35d {
-	opacity: 0.8;
-}
-.register-btn.disabled.data-v-bac4a35d {
-	background-color: #a7abb2;
-	opacity: 0.6;
-}
-.register-btn.data-v-bac4a35d::after {
+.submit-btn.data-v-bac4a35d::after {
 	border: none;
-}
-
-/* 登录入口 */
-.login-link.data-v-bac4a35d {
-	text-align: center;
-	font-size: 28rpx;
-	color: #656a73;
-}
-.login-link .link.data-v-bac4a35d {
-	margin-left: 8rpx;
 }

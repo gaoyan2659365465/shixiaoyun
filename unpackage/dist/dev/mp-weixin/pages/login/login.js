@@ -1,47 +1,68 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
-const common_assets = require("../../common/assets.js");
+const api_user = require("../../api/user.js");
+const utils_storage = require("../../utils/storage.js");
 const _sfc_main = {
   data() {
     return {
-      phone: "",
-      password: "",
-      showPassword: false
+      agreed: false
     };
   },
   methods: {
-    handleLogin() {
-      if (!this.phone) {
-        common_vendor.index.showToast({ title: "请输入手机号", icon: "none" });
+    async handleAuth() {
+      if (!this.agreed) {
+        common_vendor.index.showToast({ title: "请先同意用户协议和隐私条款", icon: "none" });
         return;
       }
-      if (!this.password) {
-        common_vendor.index.showToast({ title: "请输入密码", icon: "none" });
-        return;
+      try {
+        common_vendor.index.showLoading({ title: "登录中..." });
+        const loginRes = await new Promise((resolve, reject) => {
+          common_vendor.index.login({
+            provider: "weixin",
+            success: (res2) => resolve(res2),
+            fail: (err) => reject(err)
+          });
+        });
+        if (!loginRes.code) {
+          throw new Error("获取微信登录凭证失败");
+        }
+        const res = await api_user.userApi.loginByWechat({ code: loginRes.code });
+        if (res.code === 200 && res.data) {
+          common_vendor.index.setStorageSync("token", res.data.token);
+          utils_storage.storage.set("userInfo", res.data.userInfo);
+          common_vendor.index.showToast({ title: "登录成功", icon: "success" });
+          setTimeout(() => {
+            common_vendor.index.switchTab({ url: "/pages/index/index" });
+          }, 1500);
+        } else {
+          throw new Error(res.message || "登录失败");
+        }
+      } catch (e) {
+        common_vendor.index.__f__("error", "at pages/login/login.vue:75", "授权登录失败:", e);
+        common_vendor.index.showToast({
+          title: e.message || "登录失败，请重试",
+          icon: "none",
+          duration: 2e3
+        });
+      } finally {
+        common_vendor.index.hideLoading();
       }
-      common_vendor.index.__f__("log", "at pages/login/login.vue:67", "登录", this.phone, this.password);
     },
-    goToForgotPassword() {
-      common_vendor.index.navigateTo({ url: "/pages/forgot-password/forgot-password" });
+    skipLogin() {
+      common_vendor.index.switchTab({ url: "/pages/index/index" });
     },
-    goToRegister() {
+    goRegister() {
       common_vendor.index.navigateTo({ url: "/pages/register/register" });
     }
   }
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: common_assets._imports_0,
-    b: $data.phone,
-    c: common_vendor.o(($event) => $data.phone = $event.detail.value),
-    d: $data.showPassword ? "text" : "password",
-    e: $data.password,
-    f: common_vendor.o(($event) => $data.password = $event.detail.value),
-    g: $data.showPassword ? "/static/icons/eye-open.png" : "/static/icons/eye-close.png",
-    h: common_vendor.o(($event) => $data.showPassword = !$data.showPassword),
-    i: common_vendor.o((...args) => $options.goToForgotPassword && $options.goToForgotPassword(...args)),
-    j: common_vendor.o((...args) => $options.handleLogin && $options.handleLogin(...args)),
-    k: common_vendor.o((...args) => $options.goToRegister && $options.goToRegister(...args))
+    a: $data.agreed,
+    b: common_vendor.o(($event) => $data.agreed = !$data.agreed),
+    c: common_vendor.o((...args) => $options.handleAuth && $options.handleAuth(...args)),
+    d: common_vendor.o((...args) => $options.skipLogin && $options.skipLogin(...args)),
+    e: common_vendor.o((...args) => $options.goRegister && $options.goRegister(...args))
   };
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-e4e4508d"]]);

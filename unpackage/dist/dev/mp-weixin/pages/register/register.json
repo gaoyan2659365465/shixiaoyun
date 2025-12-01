@@ -1,6 +1,5 @@
 {
   "navigationBarTitleText": "注册",
-  "navigationBarBackgroundColor": "#F5F6FA",
-  "navigationBarTextStyle": "black",
+  "navigationStyle": "custom",
   "usingComponents": {}
 }

@@ -10,7 +10,7 @@ import request from '@/utils/request'
  */
 export function getUserPoints() {
 	return request({
-		url: '/api/points/user',
+		url: '/points/user',
 		method: 'get'
 	})
 }
@@ -24,7 +24,7 @@ export function getUserPoints() {
  */
 export function getPointsHistory(params) {
 	return request({
-		url: '/api/points/history',
+		url: '/points/history',
 		method: 'get',
 		params
 	})
@@ -41,7 +41,7 @@ export function getPointsHistory(params) {
  */
 export function getPointsProducts(params) {
 	return request({
-		url: '/api/points/products',
+		url: '/points/products',
 		method: 'get',
 		params
 	})
@@ -54,7 +54,7 @@ export function getPointsProducts(params) {
  */
 export function getProductDetail(id) {
 	return request({
-		url: `/api/points/products/${id}`,
+		url: `/points/products/${id}`,
 		method: 'get'
 	})
 }
@@ -69,7 +69,7 @@ export function getProductDetail(id) {
  */
 export function exchangeProduct(productId, data = {}) {
 	return request({
-		url: `/api/points/products/${productId}/exchange`,
+		url: `/points/products/${productId}/exchange`,
 		method: 'post',
 		data
 	})
@@ -85,7 +85,7 @@ export function exchangeProduct(productId, data = {}) {
  */
 export function getMyExchanges(params) {
 	return request({
-		url: '/api/points/exchanges',
+		url: '/points/exchanges',
 		method: 'get',
 		params
 	})
@@ -98,7 +98,7 @@ export function getMyExchanges(params) {
  */
 export function getExchangeDetail(orderId) {
 	return request({
-		url: `/api/points/exchanges/${orderId}`,
+		url: `/points/exchanges/${orderId}`,
 		method: 'get'
 	})
 }
@@ -110,7 +110,7 @@ export function getExchangeDetail(orderId) {
  */
 export function getMyCoupons(params) {
 	return request({
-		url: '/api/points/coupons',
+		url: '/points/coupons',
 		method: 'get',
 		params
 	})
@@ -123,7 +123,7 @@ export function getMyCoupons(params) {
  */
 export function useCoupon(couponId) {
 	return request({
-		url: `/api/points/coupons/${couponId}/use`,
+		url: `/points/coupons/${couponId}/use`,
 		method: 'post'
 	})
 }

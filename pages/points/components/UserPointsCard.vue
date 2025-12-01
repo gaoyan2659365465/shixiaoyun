@@ -10,11 +10,18 @@
 					<text class="detail-link" @click="handlePointsDetail">积分明细</text>
 				</view>
 			</view>
-			
+
 			<!-- 右侧卡券中心按钮 -->
 			<view class="coupon-btn" @click="handleCouponCenter">
 				<text class="coupon-text">卡券中心</text>
 			</view>
+		</view>
+
+		<!-- 提现到钱包按钮 -->
+		<view class="withdraw-section">
+			<button class="withdraw-btn" @click="handleWithdraw">
+				<text class="withdraw-text">提现到钱包</text>
+			</button>
 		</view>
 	</view>
 </template>
@@ -22,7 +29,7 @@
 <script>
 export default {
 	name: 'UserPointsCard',
-	
+
 	props: {
 		userName: {
 			type: String,
@@ -33,16 +40,21 @@ export default {
 			default: 0
 		}
 	},
-	
+
 	methods: {
 		// 查看积分明细
 		handlePointsDetail() {
 			this.$emit('detail')
 		},
-		
+
 		// 打开卡券中心
 		handleCouponCenter() {
 			this.$emit('coupon')
+		},
+
+		// 提现到钱包
+		handleWithdraw() {
+			this.$emit('withdraw')
 		}
 	}
 }
@@ -101,7 +113,7 @@ export default {
 	font-size: $font-t4;
 	color: $text-body;
 	line-height: $line-height-t4;
-	
+
 	&:active {
 		opacity: 0.7;
 	}
@@ -111,7 +123,7 @@ export default {
 	padding: $spacing-2 $spacing-3;
 	background-color: $border-color;
 	border-radius: $radius-small;
-	
+
 	&:active {
 		opacity: 0.7;
 	}
@@ -121,5 +133,36 @@ export default {
 	font-size: $font-t4;
 	color: $text-title;
 	line-height: $line-height-t4;
+}
+
+// 提现到钱包按钮样式
+.withdraw-section {
+	padding: 0 $spacing-3 $spacing-3;
+}
+
+.withdraw-btn {
+	width: 100%;
+	height: 80rpx;
+	background: linear-gradient(135deg, $brand-blue 0%, $assist-blue 100%);
+	border-radius: $radius-medium;
+	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&:active {
+		opacity: 0.8;
+	}
+
+	&::after {
+		border: none;
+	}
+}
+
+.withdraw-text {
+	font-size: $font-t3;
+	color: #FFFFFF;
+	font-weight: 600;
+	line-height: $line-height-t3;
 }
 </style>

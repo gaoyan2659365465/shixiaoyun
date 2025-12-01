@@ -1,0 +1,206 @@
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.coupon-card.data-v-b6f73edd {
+  position: relative;
+  display: flex;
+  margin: 0 30rpx 24rpx;
+  background: linear-gradient(135deg, #FF6B35 0%, #FF8C5A 100%);
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+.coupon-card.status-unused.data-v-b6f73edd {
+  background: linear-gradient(135deg, #FF6B35 0%, #FF8C5A 100%);
+}
+.coupon-card.status-used.data-v-b6f73edd {
+  background: linear-gradient(135deg, #CCCCCC 0%, #E5E5E5 100%);
+}
+.coupon-card.status-used .coupon-name.data-v-b6f73edd,
+.coupon-card.status-used .coupon-condition.data-v-b6f73edd,
+.coupon-card.status-used .coupon-date.data-v-b6f73edd,
+.coupon-card.status-used .card-label.data-v-b6f73edd,
+.coupon-card.status-used .card-value.data-v-b6f73edd {
+  color: #999999;
+}
+.coupon-card.status-used .amount.data-v-b6f73edd,
+.coupon-card.status-used .currency.data-v-b6f73edd {
+  color: #CCCCCC;
+}
+.coupon-card.status-expired.data-v-b6f73edd {
+  background: linear-gradient(135deg, #999999 0%, #BBBBBB 100%);
+}
+.coupon-card.status-expired .coupon-name.data-v-b6f73edd,
+.coupon-card.status-expired .coupon-condition.data-v-b6f73edd,
+.coupon-card.status-expired .coupon-date.data-v-b6f73edd,
+.coupon-card.status-expired .card-label.data-v-b6f73edd,
+.coupon-card.status-expired .card-value.data-v-b6f73edd {
+  color: #CCCCCC;
+}
+.coupon-card.status-expired .amount.data-v-b6f73edd,
+.coupon-card.status-expired .currency.data-v-b6f73edd {
+  color: #E5E5E5;
+}
+.coupon-card .coupon-left.data-v-b6f73edd {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 220rpx;
+  padding: 30rpx 20rpx;
+  background: rgba(255, 255, 255, 0.1);
+}
+.coupon-card .coupon-left .amount-wrapper.data-v-b6f73edd {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 8rpx;
+}
+.coupon-card .coupon-left .amount-wrapper .currency.data-v-b6f73edd {
+  font-size: 32rpx;
+  color: #FFFFFF;
+  font-weight: bold;
+  margin-right: 4rpx;
+}
+.coupon-card .coupon-left .amount-wrapper .amount.data-v-b6f73edd {
+  font-size: 56rpx;
+  color: #FFFFFF;
+  font-weight: bold;
+  line-height: 1;
+}
+.coupon-card .coupon-left .discount-label.data-v-b6f73edd,
+.coupon-card .coupon-left .exchange-label.data-v-b6f73edd {
+  font-size: 24rpx;
+  color: #FFFFFF;
+  opacity: 0.9;
+}
+.coupon-card .coupon-right.data-v-b6f73edd {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 30rpx;
+  background: #FFFFFF;
+}
+.coupon-card .coupon-right .coupon-info.data-v-b6f73edd {
+  flex: 1;
+  margin-bottom: 20rpx;
+}
+.coupon-card .coupon-right .coupon-info .coupon-name.data-v-b6f73edd {
+  display: block;
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+  margin-bottom: 12rpx;
+  line-height: 1.4;
+}
+.coupon-card .coupon-right .coupon-info .coupon-condition.data-v-b6f73edd {
+  display: block;
+  font-size: 28rpx;
+  color: #666666;
+  margin-bottom: 8rpx;
+  line-height: 1.4;
+}
+.coupon-card .coupon-right .coupon-info .coupon-date.data-v-b6f73edd {
+  display: block;
+  font-size: 24rpx;
+  color: #999999;
+  line-height: 1.4;
+}
+.coupon-card .coupon-right .card-info.data-v-b6f73edd {
+  margin-bottom: 20rpx;
+  padding: 20rpx;
+  background: #F5F5F5;
+  border-radius: 8rpx;
+}
+.coupon-card .coupon-right .card-info .card-item.data-v-b6f73edd {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+.coupon-card .coupon-right .card-info .card-item.data-v-b6f73edd:last-child {
+  margin-bottom: 0;
+}
+.coupon-card .coupon-right .card-info .card-item .card-label.data-v-b6f73edd {
+  font-size: 24rpx;
+  color: #666666;
+  min-width: 80rpx;
+}
+.coupon-card .coupon-right .card-info .card-item .card-value.data-v-b6f73edd {
+  flex: 1;
+  font-size: 24rpx;
+  color: #333333;
+  font-family: "Courier New", monospace;
+  letter-spacing: 2rpx;
+}
+.coupon-card .coupon-right .card-info .card-item .copy-btn.data-v-b6f73edd {
+  font-size: 24rpx;
+  color: #FF6B35;
+  padding: 8rpx 16rpx;
+  background: #FFF5F2;
+  border-radius: 4rpx;
+  margin-left: 16rpx;
+}
+.coupon-card .coupon-right .coupon-action .use-btn.data-v-b6f73edd {
+  width: 100%;
+  height: 72rpx;
+  line-height: 72rpx;
+  background: #FF6B35;
+  color: #FFFFFF;
+  font-size: 28rpx;
+  font-weight: bold;
+  border-radius: 36rpx;
+  border: none;
+}
+.coupon-card .coupon-right .coupon-action .use-btn.data-v-b6f73edd::after {
+  border: none;
+}
+.coupon-card .coupon-right .coupon-action .use-btn.data-v-b6f73edd:active {
+  opacity: 0.8;
+}
+.coupon-card .coupon-right .coupon-action .status-tag.data-v-b6f73edd {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 72rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  border-radius: 36rpx;
+}
+.coupon-card .coupon-right .coupon-action .status-tag.used.data-v-b6f73edd {
+  background: #F5F5F5;
+  color: #999999;
+}
+.coupon-card .coupon-right .coupon-action .status-tag.expired.data-v-b6f73edd {
+  background: #FFF5F5;
+  color: #FF4444;
+}
+.coupon-card .status-mask.data-v-b6f73edd {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+}

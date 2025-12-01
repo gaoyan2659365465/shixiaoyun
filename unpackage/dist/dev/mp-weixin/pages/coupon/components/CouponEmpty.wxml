@@ -1,0 +1,1 @@
+<view class="coupon-empty data-v-6cca6ea3"><view class="empty-icon data-v-6cca6ea3">📭</view><text class="empty-text data-v-6cca6ea3">{{a}}</text><button wx:if="{{b}}" class="refresh-btn data-v-6cca6ea3" bindtap="{{c}}"> 刷新试试 </button></view>

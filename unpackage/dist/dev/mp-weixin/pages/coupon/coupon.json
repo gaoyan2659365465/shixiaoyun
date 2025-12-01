@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "卡券中心",
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": false,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "coupon-tab-bar": "./components/CouponTabBar",
+    "coupon-card": "./components/CouponCard",
+    "coupon-empty": "./components/CouponEmpty"
+  }
+}

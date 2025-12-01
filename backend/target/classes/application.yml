@@ -72,7 +72,7 @@ springdoc:
 
 # JWT配置
 jwt:
-  secret: shixiaoyun-jwt-secret-key-2024
+  secret: shixiaoyun-jwt-secret-key-2024-for-hs512-algorithm-must-be-at-least-512-bits-long-security
   expiration: 604800
 
 # AES加密配置

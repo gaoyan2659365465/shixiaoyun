@@ -1,12 +1,40 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/message/message",
+    "pages/profile/profile",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/cooperation/cooperation",
+    "pages/points/points",
+    "pages/coupon/coupon",
+    "pages/personal-center/personal-center"
   ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "视消云",
     "navigationBarBackgroundColor": "#F5F6FA",
     "backgroundColor": "#F5F6FA"
+  },
+  "tabBar": {
+    "color": "#a7abb2",
+    "selectedColor": "#4458ff",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
   },
   "usingComponents": {}
 }

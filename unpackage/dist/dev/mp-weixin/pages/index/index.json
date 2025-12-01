@@ -1,4 +1,13 @@
 {
   "navigationBarTitleText": "视消云",
-  "usingComponents": {}
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "search-bar": "./components/SearchBar",
+    "banner-swiper": "./components/BannerSwiper",
+    "quick-entry": "./components/QuickEntry",
+    "section-title": "./components/SectionTitle",
+    "activity-card": "./components/ActivityCard"
+  }
 }

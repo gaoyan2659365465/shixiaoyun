@@ -1,0 +1,1 @@
+<view class="search-bar-container data-v-4c59ab1b"><view class="search-bar data-v-4c59ab1b" bindtap="{{c}}"><uni-icons wx:if="{{a}}" class="data-v-4c59ab1b" u-i="4c59ab1b-0" bind:__l="__l" u-p="{{a}}"></uni-icons><text class="placeholder data-v-4c59ab1b">{{b}}</text></view></view>

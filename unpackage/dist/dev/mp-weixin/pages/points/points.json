@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "积分商城",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "user-points-card": "./components/UserPointsCard",
+    "filter-bar": "./components/FilterBar",
+    "points-product-card": "./components/PointsProductCard"
+  }
+}

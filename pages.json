@@ -10,12 +10,6 @@
 			}
 		},
 		{
-			"path": "pages/venue/venue",
-			"style": {
-				"navigationBarTitleText": "场所"
-			}
-		},
-		{
 			"path": "pages/message/message",
 			"style": {
 				"navigationBarTitleText": "消息"
@@ -64,6 +58,13 @@
 				"enablePullDownRefresh": false,
 				"backgroundTextStyle": "dark"
 			}
+		},
+		{
+			"path": "pages/personal-center/personal-center",
+			"style": {
+				"navigationBarTitleText": "个人中心",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
 		}
 	],
 	"globalStyle": {
@@ -80,27 +81,15 @@
 		"list": [
 			{
 				"pagePath": "pages/index/index",
-				"text": "首页",
-				"iconPath": "static/images/tabbar/home.png",
-				"selectedIconPath": "static/images/tabbar/home-active.png"
-			},
-			{
-				"pagePath": "pages/venue/venue",
-				"text": "场所",
-				"iconPath": "static/images/tabbar/venue.png",
-				"selectedIconPath": "static/images/tabbar/venue-active.png"
+				"text": "首页"
 			},
 			{
 				"pagePath": "pages/message/message",
-				"text": "消息",
-				"iconPath": "static/images/tabbar/message.png",
-				"selectedIconPath": "static/images/tabbar/message-active.png"
+				"text": "消息"
 			},
 			{
 				"pagePath": "pages/profile/profile",
-				"text": "我的",
-				"iconPath": "static/images/tabbar/profile.png",
-				"selectedIconPath": "static/images/tabbar/profile-active.png"
+				"text": "我的"
 			}
 		]
 	},

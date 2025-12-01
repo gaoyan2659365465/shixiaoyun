@@ -39,21 +39,45 @@ export default {
 				uni.showToast({ title: '请先同意用户协议和隐私条款', icon: 'none' })
 				return
 			}
-			
+
 			try {
 				uni.showLoading({ title: '登录中...' })
-				const loginRes = await uni.login({ provider: 'weixin' })
+
+				// 获取微信登录凭证
+				const loginRes = await new Promise((resolve, reject) => {
+					uni.login({
+						provider: 'weixin',
+						success: (res) => resolve(res),
+						fail: (err) => reject(err)
+					})
+				})
+
+				if (!loginRes.code) {
+					throw new Error('获取微信登录凭证失败')
+				}
+
+				// 调用后端接口登录
 				const res = await userApi.loginByWechat({ code: loginRes.code })
-				
-				uni.setStorageSync('token', res.data.token)
-				storage.set('userInfo', res.data.userInfo)
-				
-				uni.showToast({ title: '登录成功', icon: 'success' })
-				setTimeout(() => {
-					uni.switchTab({ url: '/pages/index/index' })
-				}, 1500)
+
+				if (res.code === 200 && res.data) {
+					// 保存token和用户信息
+					uni.setStorageSync('token', res.data.token)
+					storage.set('userInfo', res.data.userInfo)
+
+					uni.showToast({ title: '登录成功', icon: 'success' })
+					setTimeout(() => {
+						uni.switchTab({ url: '/pages/index/index' })
+					}, 1500)
+				} else {
+					throw new Error(res.message || '登录失败')
+				}
 			} catch (e) {
 				console.error('授权登录失败:', e)
+				uni.showToast({
+					title: e.message || '登录失败，请重试',
+					icon: 'none',
+					duration: 2000
+				})
 			} finally {
 				uni.hideLoading()
 			}

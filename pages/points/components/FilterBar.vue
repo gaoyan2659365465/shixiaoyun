@@ -1,72 +1,44 @@
 <template>
 	<view class="filter-bar">
 		<!-- Filter 按钮 -->
-		<view class="filter-btn" @click="handleFilter">
-			<text class="btn-text">Filter</text>
-			<text class="arrow">▼</text>
-		</view>
-		
+		<picker
+			mode="selector"
+			:range="filterOptions"
+			range-key="label"
+			:value="filterIndex"
+			@change="onFilterChange"
+		>
+			<view class="filter-btn">
+				<text class="btn-text">{{ currentFilterLabel }}</text>
+				<text class="arrow">▼</text>
+			</view>
+		</picker>
+
 		<!-- Sort 按钮 -->
-		<view class="sort-btn" @click="handleSort">
-			<text class="btn-text">Sort</text>
-			<text class="arrow">▼</text>
-		</view>
-		
+		<picker
+			mode="selector"
+			:range="sortOptions"
+			range-key="label"
+			:value="sortIndex"
+			@change="onSortChange"
+		>
+			<view class="sort-btn">
+				<text class="btn-text">{{ currentSortLabel }}</text>
+				<text class="arrow">▼</text>
+			</view>
+		</picker>
+
 		<!-- 结果数量 -->
 		<view class="result-count">
-			<text class="count-text">{{ resultCount }} results</text>
+			<text class="count-text">{{ resultCount }} 个结果</text>
 		</view>
-		
-		<!-- Filter 弹窗 -->
-		<uni-popup ref="filterPopup" type="bottom">
-			<view class="popup-content">
-				<view class="popup-header">
-					<text class="popup-title">筛选</text>
-					<text class="popup-close" @click="closeFilter">✕</text>
-				</view>
-				<view class="option-list">
-					<view 
-						v-for="option in filterOptions" 
-						:key="option.id"
-						class="option-item"
-						:class="{ active: currentFilter === option.value }"
-						@click="selectFilter(option.value)"
-					>
-						<text class="option-text">{{ option.label }}</text>
-						<text v-if="currentFilter === option.value" class="check-icon">✓</text>
-					</view>
-				</view>
-			</view>
-		</uni-popup>
-		
-		<!-- Sort 弹窗 -->
-		<uni-popup ref="sortPopup" type="bottom">
-			<view class="popup-content">
-				<view class="popup-header">
-					<text class="popup-title">排序</text>
-					<text class="popup-close" @click="closeSort">✕</text>
-				</view>
-				<view class="option-list">
-					<view 
-						v-for="option in sortOptions" 
-						:key="option.id"
-						class="option-item"
-						:class="{ active: currentSort === option.value }"
-						@click="selectSort(option.value)"
-					>
-						<text class="option-text">{{ option.label }}</text>
-						<text v-if="currentSort === option.value" class="check-icon">✓</text>
-					</view>
-				</view>
-			</view>
-		</uni-popup>
 	</view>
 </template>
 
 <script>
 export default {
 	name: 'FilterBar',
-	
+
 	props: {
 		filterOptions: {
 			type: Array,
@@ -89,47 +61,59 @@ export default {
 			default: 'default'
 		}
 	},
-	
+
 	data() {
 		return {
 			currentFilter: this.defaultFilter,
 			currentSort: this.defaultSort
 		}
 	},
-	
+
+	computed: {
+		// 当前筛选项的索引
+		filterIndex() {
+			const index = this.filterOptions.findIndex(opt => opt.value === this.currentFilter)
+			return index >= 0 ? index : 0
+		},
+
+		// 当前排序项的索引
+		sortIndex() {
+			const index = this.sortOptions.findIndex(opt => opt.value === this.currentSort)
+			return index >= 0 ? index : 0
+		},
+
+		// 当前筛选项的标签
+		currentFilterLabel() {
+			const option = this.filterOptions.find(opt => opt.value === this.currentFilter)
+			return option ? option.label : '筛选'
+		},
+
+		// 当前排序项的标签
+		currentSortLabel() {
+			const option = this.sortOptions.find(opt => opt.value === this.currentSort)
+			return option ? option.label : '排序'
+		}
+	},
+
 	methods: {
-		// 打开筛选弹窗
-		handleFilter() {
-			this.$refs.filterPopup.open()
+		// 筛选项改变
+		onFilterChange(e) {
+			const index = e.detail.value
+			const option = this.filterOptions[index]
+			if (option) {
+				this.currentFilter = option.value
+				this.$emit('filter', option.value)
+			}
 		},
-		
-		// 关闭筛选弹窗
-		closeFilter() {
-			this.$refs.filterPopup.close()
-		},
-		
-		// 选择筛选项
-		selectFilter(value) {
-			this.currentFilter = value
-			this.$emit('filter', value)
-			this.closeFilter()
-		},
-		
-		// 打开排序弹窗
-		handleSort() {
-			this.$refs.sortPopup.open()
-		},
-		
-		// 关闭排序弹窗
-		closeSort() {
-			this.$refs.sortPopup.close()
-		},
-		
-		// 选择排序项
-		selectSort(value) {
-			this.currentSort = value
-			this.$emit('sort', value)
-			this.closeSort()
+
+		// 排序项改变
+		onSortChange(e) {
+			const index = e.detail.value
+			const option = this.sortOptions[index]
+			if (option) {
+				this.currentSort = option.value
+				this.$emit('sort', option.value)
+			}
 		}
 	}
 }
@@ -154,9 +138,10 @@ export default {
 	padding: $spacing-1 $spacing-2;
 	border: 1px solid $border-color;
 	border-radius: $radius-small;
-	
+
 	&:active {
 		opacity: 0.7;
+		background-color: $bg-color;
 	}
 }
 
@@ -181,77 +166,5 @@ export default {
 	font-size: $font-t4;
 	color: $text-secondary;
 	line-height: $line-height-t4;
-}
-
-.popup-content {
-	background-color: $card-bg;
-	border-radius: $radius-medium $radius-medium 0 0;
-	padding-bottom: env(safe-area-inset-bottom);
-}
-
-.popup-header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: $spacing-3 $spacing-4;
-	border-bottom: 1px solid $divider-color;
-}
-
-.popup-title {
-	font-size: $font-t3;
-	color: $text-title;
-	font-weight: 500;
-	line-height: $line-height-t3;
-}
-
-.popup-close {
-	font-size: $font-t2;
-	color: $text-secondary;
-	line-height: $line-height-t2;
-	padding: 0 $spacing-1;
-	
-	&:active {
-		opacity: 0.7;
-	}
-}
-
-.option-list {
-	max-height: 60vh;
-	overflow-y: auto;
-}
-
-.option-item {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: $spacing-3 $spacing-4;
-	border-bottom: 1px solid $divider-color;
-	
-	&:last-child {
-		border-bottom: none;
-	}
-	
-	&:active {
-		background-color: $bg-color;
-	}
-	
-	&.active {
-		.option-text {
-			color: $brand-blue;
-			font-weight: 500;
-		}
-	}
-}
-
-.option-text {
-	font-size: $font-t3;
-	color: $text-title;
-	line-height: $line-height-t3;
-}
-
-.check-icon {
-	font-size: $font-t3;
-	color: $brand-blue;
-	line-height: $line-height-t3;
 }
 </style>

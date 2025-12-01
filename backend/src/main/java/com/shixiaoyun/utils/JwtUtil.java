@@ -34,10 +34,10 @@ public class JwtUtil {
     public void init() {
         secret = secretConfig;
         expiration = expirationConfig;
-        // 生成密钥，确保至少32字节（256位）
-        byte[] keyBytes = new byte[32];
+        // 生成密钥，确保至少64字节（512位）用于HS512算法
+        byte[] keyBytes = new byte[64];
         byte[] secretBytes = secret.getBytes(StandardCharsets.UTF_8);
-        System.arraycopy(secretBytes, 0, keyBytes, 0, Math.min(secretBytes.length, 32));
+        System.arraycopy(secretBytes, 0, keyBytes, 0, Math.min(secretBytes.length, 64));
         key = Keys.hmacShaKeyFor(keyBytes);
     }
 

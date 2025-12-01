@@ -7,9 +7,9 @@ USE shixiaoyun;
 CREATE TABLE `sys_user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
   `nickname` varchar(50) NOT NULL COMMENT '昵称',
-  `phone` varchar(11) NOT NULL COMMENT '手机号',
+  `phone` varchar(11) DEFAULT NULL COMMENT '手机号',
   `email` varchar(100) DEFAULT NULL COMMENT '邮箱',
-  `password` varchar(255) NOT NULL COMMENT '密码(AES加密)',
+  `password` varchar(255) DEFAULT NULL COMMENT '密码(AES加密)',
   `avatar` varchar(255) DEFAULT NULL COMMENT '头像URL',
   `gender` tinyint(1) DEFAULT 0 COMMENT '性别 0-未知 1-男 2-女',
   `openid` varchar(64) DEFAULT NULL COMMENT '微信openId',

@@ -139,8 +139,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public LoginVO loginByWechat(WechatLoginDTO dto) {
         // TODO: 调用微信接口获取openId和unionId
-        // 这里需要调用微信的接口,暂时模拟实现
-        String openId = "mock_openid_" + System.currentTimeMillis();
+        // 正式环境需要调用微信API: https://api.weixin.qq.com/sns/jscode2session
+        // 参数: appid, secret, js_code=dto.getCode(), grant_type=authorization_code
+        // 返回: openid, session_key, unionid
+
+        // 开发环境模拟: 使用固定的测试openId,模拟同一个微信用户
+        // 注意: 微信每次调用uni.login()会生成新的code,但同一个微信用户的openId是固定的
+        String openId = "mock_openid_test_user_001";
 
         // 1. 根据openId查询用户
         LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<>();

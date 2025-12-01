@@ -12,44 +12,56 @@
 		<view class="form-container">
 			<!-- 姓名 -->
 			<view class="form-item">
-				<text class="form-label">姓名</text>
-				<input 
-					class="form-input" 
-					v-model="formData.name" 
-					placeholder="Value"
+				<view class="label-wrapper">
+					<text class="form-label">姓名</text>
+					<text class="required-mark">*</text>
+				</view>
+				<input
+					class="form-input"
+					v-model="formData.name"
+					placeholder="请输入姓名"
 					placeholder-class="input-placeholder"
 				/>
 			</view>
-			
+
 			<!-- 公司名称 -->
 			<view class="form-item">
-				<text class="form-label">公司名称</text>
-				<input 
-					class="form-input" 
-					v-model="formData.companyName" 
-					placeholder="Value"
+				<view class="label-wrapper">
+					<text class="form-label">公司名称</text>
+					<text class="required-mark">*</text>
+				</view>
+				<input
+					class="form-input"
+					v-model="formData.companyName"
+					placeholder="请输入公司名称"
 					placeholder-class="input-placeholder"
 				/>
 			</view>
-			
+
 			<!-- 联系方式 -->
 			<view class="form-item">
-				<text class="form-label">联系方式</text>
-				<input 
-					class="form-input" 
-					v-model="formData.contact" 
-					placeholder="Value"
+				<view class="label-wrapper">
+					<text class="form-label">联系方式</text>
+					<text class="required-mark">*</text>
+				</view>
+				<input
+					class="form-input"
+					v-model="formData.contact"
+					placeholder="请输入手机号或邮箱"
 					placeholder-class="input-placeholder"
 				/>
 			</view>
-			
+
 			<!-- CRM编码 -->
 			<view class="form-item">
-				<text class="form-label">CRM编码</text>
-				<textarea 
-					class="form-textarea" 
-					v-model="formData.crmCode" 
-					placeholder="Value"
+				<view class="label-wrapper">
+					<text class="form-label">CRM编码</text>
+					<text class="optional-mark">（选填）</text>
+				</view>
+				<textarea
+					class="form-textarea"
+					v-model="formData.crmCode"
+					placeholder="请联系对应销售获取CRM编码"
 					placeholder-class="input-placeholder"
 					:maxlength="-1"
 				/>
@@ -73,7 +85,7 @@
 </template>
 
 <script>
-import { userApi } from '@/api/user.js'
+import { cooperationApi } from '@/api/cooperation.js'
 
 export default {
 	data() {
@@ -105,10 +117,7 @@ export default {
 				uni.showToast({ title: '请输入联系方式', icon: 'none' })
 				return false
 			}
-			if (!this.formData.crmCode.trim()) {
-				uni.showToast({ title: '请输入CRM编码', icon: 'none' })
-				return false
-			}
+			// CRM编码为选填项，不需要验证
 			if (!this.agreed) {
 				uni.showToast({ title: '请先同意隐私条款', icon: 'none' })
 				return false
@@ -120,35 +129,40 @@ export default {
 			if (!this.validateForm()) {
 				return
 			}
-			
+
 			try {
 				uni.showLoading({ title: '提交中...' })
-				
-				const res = await userApi.register({
+
+				// 调用业务合作注册接口
+				const res = await cooperationApi.register({
 					name: this.formData.name,
 					companyName: this.formData.companyName,
 					contact: this.formData.contact,
-					crmCode: this.formData.crmCode
+					crmCode: this.formData.crmCode || ''
 				})
-				
-				uni.showToast({ 
-					title: '注册成功', 
-					icon: 'success',
-					duration: 2000
-				})
-				
-				setTimeout(() => {
-					uni.navigateBack()
-				}, 2000)
-				
-			} catch (e) {
-				console.error('注册失败:', e)
-				uni.showToast({ 
-					title: e.message || '注册失败，请重试', 
-					icon: 'none' 
-				})
-			} finally {
+
 				uni.hideLoading()
+
+				uni.showModal({
+					title: '感谢注册',
+					content: '如需使用业务合作功能，请等待1-3个工作日人工审核。谢谢！',
+					showCancel: false,
+					confirmText: '确定',
+					success: () => {
+						// 注册成功后直接跳转到首页
+						uni.switchTab({
+							url: '/pages/index/index'
+						})
+					}
+				})
+
+			} catch (e) {
+				uni.hideLoading()
+				console.error('注册失败:', e)
+				uni.showToast({
+					title: e.message || '注册失败，请重试',
+					icon: 'none'
+				})
 			}
 		}
 	}
@@ -208,12 +222,28 @@ export default {
 	margin-bottom: 48rpx;
 }
 
+.label-wrapper {
+	display: flex;
+	align-items: center;
+	margin-bottom: 16rpx;
+}
+
 .form-label {
-	display: block;
 	font-size: 28rpx;
 	color: #000;
-	margin-bottom: 16rpx;
 	font-weight: 400;
+}
+
+.required-mark {
+	font-size: 28rpx;
+	color: #f34545;
+	margin-left: 4rpx;
+}
+
+.optional-mark {
+	font-size: 24rpx;
+	color: #a7abb2;
+	margin-left: 8rpx;
 }
 
 .form-input {
